@@ -14,7 +14,7 @@ const Hero = () => {
 
       <div
         aria-hidden
-        className="absolute bottom-0 -left-32 w-[320px] h-[320px] rounded-full bg-(--gold)/15 blur-3xl"
+        className="absolute bottom-0 -left-32 w-[320px] h-[320px] rounded-full bg-(--gold)/20 blur-3xl"
       />
 
       <div className="relative z-10 container mx-auto px-6 lg:px-8 min-h-screen flex items-center">

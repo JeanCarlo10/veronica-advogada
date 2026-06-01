@@ -7,7 +7,7 @@ import HigienizacaoBg from "@/assets/Service04.png";
 import PPFBg from "@/assets/Service02.jpg";
 import VitrificacaoBg from "@/assets/Service03.jpg";
 
-const whatsappNumber = "5545998054299";
+const whatsappNumber = "45991010233";
 
 const services = [
   {

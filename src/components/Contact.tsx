@@ -3,7 +3,7 @@ import { FaWhatsapp } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { SlideUp } from "@/animations";
 
-const WHATSAPP_NUMBER = "5545998054299";
+const WHATSAPP_NUMBER = "45991010233";
 const WHATSAPP_TEXT = "Olá! Gostaria de agendar um atendimento.";
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   WHATSAPP_TEXT,

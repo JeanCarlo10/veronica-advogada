@@ -6,10 +6,10 @@ import logoImage from "@/assets/Logo_Horizontal.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navItems = [
-  { label: "INÍCIO", id: "home" },
-  { label: "SERVIÇOS", id: "service" },
-  { label: "SOBRE", id: "about" },
-  { label: "CONTATO", id: "contact" },
+  { label: "Início", id: "home" },
+  { label: "Áreas de atuação", id: "service" },
+  { label: "Sobre", id: "about" },
+  { label: "Contato", id: "contact" },
 ];
 
 const Header = () => {
@@ -114,7 +114,9 @@ const Header = () => {
   return (
     <header
       className={`fixed left-0 right-0 top-0 z-50 h-20 transition-all duration-300 ${
-        isScrolled ? "bg-white border-b border-(--gold-soft)" : "bg-transparent"
+        isScrolled
+          ? "bg-(--background)/85 backdrop-blur-md border-b border-(--border)/70"
+          : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 md:px-8">
