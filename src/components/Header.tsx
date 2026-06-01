@@ -114,9 +114,7 @@ const Header = () => {
   return (
     <header
       className={`fixed left-0 right-0 top-0 z-50 h-20 transition-all duration-300 ${
-        isScrolled
-          ? "bg-white border-b border-(--gold-soft)"
-          : "bg-transparent"
+        isScrolled ? "bg-white border-b border-(--gold-soft)" : "bg-transparent"
       }`}
     >
       <div className="container mx-auto px-6 md:px-8">
@@ -159,6 +157,7 @@ const Header = () => {
                   <a
                     key={item.id}
                     href={`#${item.id}`}
+                    // className="text-sm text-muted-foreground hover:text-gold transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-gold-deep after:transition-all hover:after:w-full"
                     className={`group relative text-lg font-medium tracking-[0.18em] transition-colors duration-300 ${
                       isActive
                         ? "text-(--primary)"
@@ -282,7 +281,7 @@ const Header = () => {
 
                   <Button
                     onClick={() => scrollToSection("contact")}
-                    className="group relative mt-10 w-full cursor-pointer overflow-hidden rounded-none border border-(--border-dark) bg-(--primary) px-6 py-6 text-lg font-bold text-black [clip-path:polygon(12px_0,100%_0,calc(100%-12px)_100%,0_100%)]"
+                    className="group relative mt-10 w-full cursor-pointer overflow-hidden rounded-none border-(--border) bg-(--primary) px-6 py-6 text-lg font-bold text-black [clip-path:polygon(12px_0,100%_0,calc(100%-12px)_100%,0_100%)]"
                   >
                     <span className="block transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
                       Agendar
