@@ -1,56 +1,7 @@
 import { MapPin, Mail } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { useForm, Controller } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { z } from "zod";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
-} from "@/components/ui/form";
-import { toast } from "sonner";
-import { IMaskInput } from "react-imask";
 import { motion } from "framer-motion";
 import { SlideUp } from "@/animations";
-
-const quoteFormSchema = z.object({
-  name: z
-    .string()
-    .trim()
-    .min(1, { message: "Nome obrigatório!" })
-    .max(100, { message: "Nome deve ter menos de 100 caracteres" }),
-  email: z
-    .string()
-    .trim()
-    .email({ message: "E-mail inválido!" })
-    .max(255, { message: "E-mail deve ter menos de 255 caracteres" }),
-  phone: z
-    .string()
-    .trim()
-    .min(1, { message: "Telefone obrigatório!" })
-    .max(20, { message: "Telefone deve ter menos de 20 caracteres" }),
-  service: z.string().min(1, { message: "Selecione um serviço" }),
-  message: z
-    .string()
-    .trim()
-    .min(1, { message: "Mensagem obrigatória!" })
-    .max(1000, { message: "Mensagem deve ter menos de 1000 caracteres" }),
-});
-
-type QuoteFormData = z.infer<typeof quoteFormSchema>;
 
 const WHATSAPP_NUMBER = "5545998054299";
 const WHATSAPP_TEXT = "Olá! Gostaria de agendar um atendimento.";
@@ -59,54 +10,6 @@ const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponen
 )}`;
 
 const Contact = () => {
-  const form = useForm<QuoteFormData>({
-    resolver: zodResolver(quoteFormSchema),
-    defaultValues: {
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    },
-  });
-
-  const onSubmit = (data: QuoteFormData) => {
-    const serviceTextMap: Record<string, string> = {
-      higienizacao: "Higienização interna",
-      polimento: "Polimento técnico",
-      ppf: "PPF (Paint Protection Film)",
-      vitrificacao: "Vitrificação de pintura",
-      outro: "Outro",
-    };
-
-    const serviceText =
-      serviceTextMap[data.service] || "Serviço não especificado";
-
-    let message;
-    if (data.service === "outro") {
-      message = `Olá!\n\nNome: ${data.name}\nE-mail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
-    } else {
-      message = `Olá! Gostaria de solicitar um orçamento:\n\nNome: ${data.name}\nE-mail: ${data.email}\nTelefone: ${data.phone}\nServiço: ${serviceText}\nMensagem: ${data.message}`;
-    }
-
-    const encodedMessage = encodeURIComponent(message);
-
-    const WHATSAPP_CONTACT = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodedMessage}`;
-    window.open(WHATSAPP_CONTACT, "_blank", "noopener,noreferrer");
-
-    toast.success(
-      "Mensagem enviada com sucesso! Entraremos em contato em breve.",
-    );
-
-    form.reset({
-      name: "",
-      email: "",
-      phone: "",
-      service: "",
-      message: "",
-    });
-  };
-
   return (
     <section id="contact" className="pt-10 pb-20 bg-(--background)">
       <div className="container mx-auto px-6 md:px-8">
