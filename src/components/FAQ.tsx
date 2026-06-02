@@ -81,7 +81,7 @@ const item: Variants = {
 
 const FAQ = () => {
   return (
-    <section id="dicas" className="bg-(--background) pb-20">
+    <section id="dicas" className="bg-(--gold-soft)/20 py-20">
       <div className="container mx-auto overflow-hidden px-6 md:px-8">
         <div className="mb-12 text-center">
           <motion.h2

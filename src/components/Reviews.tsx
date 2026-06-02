@@ -22,45 +22,45 @@ type StaticReview = {
 
 const STATIC_REVIEWS: StaticReview[] = [
   {
-    author_name: "Mariana S.",
+    author_name: "Maria Aparecida",
     rating: 5,
     relative_time_description: "há 2 semanas",
-    text: "Atendimento impecável! Meu carro voltou com um brilho incrível e acabamento perfeito. Dá para ver o cuidado em cada detalhe.",
+    text: "Fui muito bem orientada durante todo o processo da minha aposentadoria. A Dra. Verônica esclareceu cada etapa com atenção e profissionalismo, trazendo segurança em um momento importante da minha vida.",
     profile_photo_url: Img04,
   },
   {
     author_name: "Carlos Henrique",
     rating: 5,
     relative_time_description: "há 1 mês",
-    text: "Serviço de altíssimo nível. Fiz vitrificação e o resultado ficou excelente, com muito brilho e proteção na pintura.",
+    text: "Excelente atendimento. Sempre tive minhas dúvidas respondidas com clareza e transparência. O acompanhamento foi impecável do início ao fim.",
     profile_photo_url: Img01,
   },
   {
-    author_name: "Amanda P.",
+    author_name: "Amanda Pereira",
     rating: 5,
     relative_time_description: "há 3 dias",
-    text: "Levei meu carro para higienização interna e fiquei impressionada. Interior limpo, cheiro agradável e acabamento muito caprichado.",
+    text: "Procurei auxílio para solicitar um benefício previdenciário e recebi toda a orientação necessária. Atendimento humanizado e muito comprometido.",
     profile_photo_url: Img05,
   },
   {
     author_name: "João Vitor",
-    rating: 4,
+    rating: 5,
     relative_time_description: "há 2 meses",
-    text: "Ambiente organizado, equipe atenciosa e serviço muito bem executado. Meu veículo ficou com aparência renovada.",
+    text: "Profissional extremamente dedicada. Conseguiu conduzir meu caso com responsabilidade e sempre me manteve informado sobre cada atualização.",
     profile_photo_url: Img02,
   },
   {
-    author_name: "Patrícia L.",
+    author_name: "Patrícia Lima",
     rating: 5,
     relative_time_description: "há 5 dias",
-    text: "Agendamento fácil e atendimento excelente. Fiz polimento técnico e o carro voltou com brilho e profundidade na pintura.",
+    text: "Além do conhecimento técnico, o diferencial foi a forma acolhedora com que fui atendida. Recomendo para quem busca confiança e segurança jurídica.",
     profile_photo_url: Img06,
   },
   {
-    author_name: "Rafael A.",
+    author_name: "Rafael Almeida",
     rating: 5,
     relative_time_description: "há 1 semana",
-    text: "Profissionais muito cuidadosos e detalhistas. Serviço premium, com resultado acima das expectativas.",
+    text: "Atendimento sério, transparente e eficiente. A experiência foi excelente e me senti seguro durante todo o processo previdenciário.",
     profile_photo_url: Img03,
   },
 ];
@@ -131,28 +131,39 @@ const Reviews = () => {
     <section id="avaliacoes" className="py-20 bg-(--background)">
       <div className="container mx-auto px-6 md:px-8">
         <div className="text-center mb-12">
+          <motion.span
+            variants={SlideUp(0.1)}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="text-xs tracking-[0.3em] uppercase text-(--gold-deep)"
+          >
+            Depoimentos
+          </motion.span>
+
           <motion.h2
             variants={SlideUp(0.2)}
             initial="initial"
-            whileInView={"animate"}
-            className="text-4xl md:text-5xl font-bold mb-3 text-(--primary)"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="mt-4 mb-4 font-display text-3xl md:text-4xl lg:text-5xl text-(--foreground)"
           >
-            Excelência reconhecida por nossos clientes
+            A confiança de quem já utilizou
+            <br className="hidden md:block" />
+            <span className="md:inline"> nossos serviços</span>
           </motion.h2>
 
-          <motion.p
+          <motion.div
             variants={SlideUp(0.4)}
             initial="initial"
-            whileInView={"animate"}
-            className="text-lg text-(--muted-foreground) max-w-2xl mx-auto"
-          >
-            Depoimentos de clientes que escolheram cuidado premium, proteção e
-            acabamento de alto padrão.
-          </motion.p>
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="hairline mt-8 mx-auto w-32"
+          ></motion.div>
         </div>
 
         {/* Header tipo Google */}
-        <div className="mb-8 flex flex-col gap-4 rounded-2xl bg-(--card) p-5 md:flex-row md:items-center md:justify-between">
+        <div className="mb-8 flex flex-col gap-4 rounded-2xl bg-(--gold-soft) p-5 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col">
             <div className="flex items-center gap-3">
               <img
@@ -163,17 +174,16 @@ const Reviews = () => {
                 className="h-8 w-auto"
                 loading="lazy"
               />
-              <span className="text-lg font-semibold text-white">
+              <span className="text-lg font-semibold text-(--foreground)">
                 Avaliações
               </span>
             </div>
 
             <div className="mt-2 flex items-center gap-2">
-              <span className="text-3xl font-bold text-white">
+              <span className="text-3xl font-bold text-(--foreground)">
                 {ratingAvg.toFixed(1)}
               </span>
               <Stars rating={ratingAvg} size={20} />
-              <span className="text-sm text-white/70">({totalRatings})</span>
             </div>
           </div>
 
@@ -201,7 +211,7 @@ const Reviews = () => {
 
             return (
               <SwiperSlide key={idx} className="pb-10">
-                <div className="h-[300px] bg-(--card) rounded-2xl p-5 shadow-sm flex flex-col">
+                <div className="h-[300px] bg-(--gold-soft) rounded-2xl p-5 shadow-sm flex flex-col">
                   <div className="mb-4 flex items-center gap-3">
                     <img
                       src={r.profile_photo_url || "/avatar-placeholder.png"}

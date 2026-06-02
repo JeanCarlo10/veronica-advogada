@@ -1,40 +1,122 @@
 import { motion } from "framer-motion";
-import AboutCarousel from "@/components/AboutCarousel";
+import { SlideUp } from "@/animations";
+import Image from "@/assets/About3.png";
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-(--background)">
+    <section id="about" className="py-20 bg-(--gold-soft)/20">
       <div className="container mx-auto px-6 md:px-8">
-        <div className="flex flex-col lg:flex-row gap-12 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-full lg:w-1/2"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-(--primary)">
-              Sobre a Detailer
-            </h2>
-            <p className="text-lg text-white/90 mb-6">
-              Na Detailer Estética Automotiva, cada veículo recebe um cuidado
-              minucioso, pensado para valorizar sua presença, preservar sua
-              originalidade e elevar seu padrão estético.
-            </p>
-            <p className="text-lg text-white/90 mb-8">
-              Unimos técnica, produtos de alta performance e atenção absoluta
-              aos detalhes para entregar brilho, proteção e acabamento à altura
-              de quem busca exclusividade em cada linha do automóvel.
-            </p>
-          </motion.div>
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-20">
+          {/* TEXTO */}
+          <div className="w-full lg:w-[45%]">
+            <motion.span
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="text-xs uppercase tracking-[0.35em] text-(--gold-deep)"
+            >
+              Sobre
+            </motion.span>
 
-          <motion.div
-            initial={{ opacity: 0, x: 100 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
-            className="w-full lg:w-1/2"
-          >
-            <AboutCarousel />
-          </motion.div>
+            <motion.h2
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="mt-5 mb-8 font-display text-4xl md:text-5xl lg:text-6xl text-(--foreground)"
+            >
+              Verônica Fernandes
+            </motion.h2>
+
+            <motion.div
+              variants={SlideUp(0.4)}
+              initial="initial"
+              whileInView="animate"
+              viewport={{ once: true }}
+              className="hairline mt-8 mb-8"
+            ></motion.div>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+              className="text-lg leading-relaxed text-(--muted-foreground) mb-6"
+            >
+              Verônica Fernandes atua na área do Direito Previdenciário com o
+              propósito de garantir que cada cliente tenha acesso aos benefícios
+              e direitos assegurados pela legislação, conduzindo cada caso com
+              responsabilidade, clareza e atenção individualizada.
+            </motion.p>
+
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.2 }}
+              className="text-lg leading-relaxed text-(--muted-foreground)"
+            >
+              Com uma atuação pautada pela ética, transparência e compromisso,
+              oferece orientação jurídica estratégica para aposentadorias,
+              benefícios por incapacidade, pensões, revisões previdenciárias e
+              demais demandas relacionadas à proteção social e à segurança
+              jurídica de seus clientes.
+            </motion.p>
+
+            {/* VALORES */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.4 }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12"
+            >
+              <div className="border-l border-(--gold-deep) pl-4">
+                <h4 className="font-display text-2xl text-(--gold-deep)">
+                  Ética
+                </h4>
+                <p className="text-sm text-(--muted-foreground)">
+                  e transparência
+                </p>
+              </div>
+
+              <div className="border-l border-(--gold-deep) pl-4">
+                <h4 className="font-display text-2xl text-(--gold-deep)">
+                  Segurança
+                </h4>
+                <p className="text-sm text-(--muted-foreground)">jurídica</p>
+              </div>
+
+              <div className="border-l border-(--gold-deep) pl-4">
+                <h4 className="font-display text-2xl text-(--gold-deep)">
+                  Atenção
+                </h4>
+                <p className="text-sm text-(--muted-foreground)">
+                  personalizada
+                </p>
+              </div>
+            </motion.div>
+          </div>
+
+          <div className="w-full lg:w-[55%] flex justify-center">
+            <motion.div
+              initial={{ opacity: 0, x: 80 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.9 }}
+              whileHover={{
+                scale: 1.02,
+              }}
+              className="relative z-10"
+            >
+              <img
+                src={Image}
+                alt="Verônica Fernandes"
+                className="w-full max-w-[650px] h-auto object-contain rounded-2xl shadow-[0_20px_60px_rgba(0,0,0,0.15)]"
+              />
+            </motion.div>
+          </div>
         </div>
       </div>
     </section>
