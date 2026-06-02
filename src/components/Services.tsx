@@ -1,147 +1,170 @@
-import { Sparkles, Shield, SprayCan, ShieldCheck } from "lucide-react";
 import { motion } from "framer-motion";
 import { SlideUp } from "@/animations";
 
-import PolimentoBg from "@/assets/Service01.jpg";
-import HigienizacaoBg from "@/assets/Service04.png";
-import PPFBg from "@/assets/Service02.jpg";
-import VitrificacaoBg from "@/assets/Service03.jpg";
+import AposentadoriaBg from "@/assets/Aposentadoria.jpg";
+import RevisaoBg from "@/assets/Revisao.jpg";
+import AverbacaoBg from "@/assets/Averbação.jpg";
+import AuxilioDoencaBg from "@/assets/Doença.jpg";
+import BeneficioAssistencialBg from "@/assets/Beneficio.png";
+import PensaoMorteBg from "@/assets/Pensao01.jpg";
+import FamiliaBg from "@/assets/Familia.png";
 
 const whatsappNumber = "45991010233";
 
 const services = [
   {
-    icon: Sparkles,
-    title: "Polimento técnico",
+    title: "Aposentadoria",
     description:
-      "Remove marcas leves, microrriscos e opacidade da pintura, devolvendo brilho e profundidade à cor do veículo.",
-    image: PolimentoBg,
-    imagePosition: "center 80%",
-    whatsappMessage:
-      "Olá, gostaria de mais informações sobre o serviço de Polimento Técnico.",
-  },
-  {
-    icon: SprayCan,
-    title: "Higienização interna",
-    description:
-      "Limpeza profunda da parte interna do veículo, removendo sujeiras, manchas e odores para mais conforto e conservação.",
-    image: HigienizacaoBg,
+      "Orientação jurídica para análise, planejamento e requerimento de aposentadoria, buscando mais segurança em cada etapa do processo.",
+    image: AposentadoriaBg,
     imagePosition: "center",
     whatsappMessage:
-      "Olá, gostaria de mais informações sobre Higienização Interna.",
+      "Olá, gostaria de mais informações sobre orientação jurídica para aposentadoria.",
   },
   {
-    icon: ShieldCheck,
-    title: "PPF (Paint Protection Film)",
+    title: "Revisão de benefício",
     description:
-      "Película transparente de alta proteção que ajuda a preservar a pintura contra riscos leves, sujeira e desgaste diário.",
-    image: PPFBg,
-    imagePosition: "center 100%",
+      "Análise detalhada do benefício previdenciário para identificar possíveis erros, diferenças ou oportunidades de revisão junto ao INSS.",
+    image: RevisaoBg,
+    imagePosition: "center",
     whatsappMessage:
-      "Olá, gostaria de receber mais informações sobre aplicação de PPF.",
+      "Olá, gostaria de saber mais sobre revisão de benefício previdenciário.",
   },
   {
-    icon: Shield,
-    title: "Vitrificação de pintura",
+    title: "Averbação de período rural e especial",
     description:
-      "Aplica uma camada de proteção de alta durabilidade sobre a pintura, ajudando a conservar o brilho e facilitar a limpeza.",
-    image: VitrificacaoBg,
-    imagePosition: "center 75%",
+      "Atuação na comprovação e inclusão de períodos rurais ou especiais para fortalecer o histórico previdenciário e auxiliar no acesso ao benefício.",
+    image: AverbacaoBg,
+    imagePosition: "center",
     whatsappMessage:
-      "Olá, gostaria de mais informações sobre Vitrificação de Pintura.",
+      "Olá, gostaria de orientação sobre averbação de período rural ou especial.",
+  },
+  {
+    title: "Auxílio-doença",
+    description:
+      "Orientação para segurados temporariamente incapazes de trabalhar, com análise de documentos médicos e acompanhamento do pedido.",
+    image: AuxilioDoencaBg,
+    imagePosition: "center",
+    whatsappMessage: "Olá, gostaria de informações sobre auxílio-doença.",
+  },
+  {
+    title: "Benefício assistencial",
+    description:
+      "Atendimento para análise de direito ao BPC/LOAS, voltado a idosos e pessoas com deficiência em situação de vulnerabilidade.",
+    image: BeneficioAssistencialBg,
+    imagePosition: "center",
+    whatsappMessage:
+      "Olá, gostaria de saber mais sobre benefício assistencial BPC/LOAS.",
+  },
+  {
+    title: "Pensão por morte",
+    description:
+      "Acompanhamento jurídico para dependentes que buscam garantir o benefício após o falecimento de um familiar segurado.",
+    image: PensaoMorteBg,
+    imagePosition: "center",
+    whatsappMessage: "Olá, gostaria de orientação sobre pensão por morte.",
+  },
+  {
+    title: "Família",
+    description:
+      "Atuação em demandas familiares com acolhimento, clareza e responsabilidade, buscando soluções jurídicas seguras e humanizadas.",
+    image: FamiliaBg,
+    imagePosition: "center",
+    whatsappMessage:
+      "Olá, gostaria de mais informações sobre atendimento em Direito de Família.",
   },
 ];
 
 const Services = () => {
   return (
-    <section id="service" className="py-20 bg-(--background)">
+    <section id="servicos" className="relative py-24 bg-(--background)">
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
+          <motion.span
+            variants={SlideUp(0.1)}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="text-xs tracking-[0.3em] uppercase text-(--gold-deep)"
+          >
+            Áreas de atuação
+          </motion.span>
+
           <motion.h2
             variants={SlideUp(0.2)}
             initial="initial"
             whileInView="animate"
-            className="mb-4 text-4xl font-bold text-(--primary) md:text-5xl"
+            viewport={{ once: true }}
+            className="mt-4 mb-4 font-display text-3xl md:text-4xl lg:text-5xl text-(--foreground)"
           >
-            Nossos Serviços
+            Direito previdenciário com clareza,
+            <br className="hidden md:block" />
+            <span className="md:inline"> estratégia e acolhimento</span>
           </motion.h2>
 
-          <motion.p
+          <motion.div
             variants={SlideUp(0.4)}
             initial="initial"
             whileInView="animate"
-            className="mx-auto max-w-2xl text-xl text-(--muted-foreground)"
-          >
-            Cuidado, proteção e acabamento premium para valorizar cada detalhe
-            do seu veículo.
-          </motion.p>
+            viewport={{ once: true }}
+            className="hairline mt-8 mx-auto w-32"
+          />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
           {services.map((service, index) => {
-            const Icon = service.icon;
             const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
               service.whatsappMessage,
             )}`;
 
             return (
               <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 50 }}
+                key={service.title}
+                initial={{ opacity: 0, y: 45 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.4, delay: index * 0.1 }}
+                viewport={{ once: true, amount: 0.25 }}
+                transition={{ duration: 0.45, delay: index * 0.08 }}
               >
-                <article className="group/card relative h-[460px] cursor-pointer overflow-hidden rounded-2xl md:h-[400px]">
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Falar com a advogada sobre ${service.title}`}
+                  className="group/card relative block h-[430px] overflow-hidden cursor-pointer rounded-[1.75rem] shadow-sm transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_24px_70px_rgba(156,125,61,0.22)] focus:outline-none focus-visible:ring-2 focus-visible:ring-(--gold) focus-visible:ring-offset-4 focus-visible:ring-offset-(--background)"
+                >
                   <img
                     src={service.image}
                     alt={service.title}
-                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 ease-out md:group-hover/card:scale-105"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-110"
                     style={{ objectPosition: service.imagePosition }}
+                    loading="lazy"
+                    decoding="async"
                   />
 
-                  {/* Overlay */}
-                  <div className="absolute inset-0 bg-black/50 transition-all duration-500 md:group-hover/card:bg-black/60" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/50 to-black/15 transition-all duration-500 group-hover/card:from-black/90 group-hover/card:via-black/55" />
 
-                  {/* Content before hover - desktop only */}
-                  <div className="absolute inset-0 z-10 hidden items-center justify-center px-6 text-center transition-all duration-500 md:flex md:group-hover/card:scale-95 md:group-hover/card:opacity-0">
-                    <div className="flex items-center gap-3 text-white">
-                      <Icon className="h-12 w-12" />
-                      <h3 className="text-3xl font-bold">{service.title}</h3>
-                    </div>
-                  </div>
+                  <div className="absolute inset-0 rounded-[1.75rem] ring-1 ring-inset ring-white/10 transition-all duration-500 group-hover/card:ring-(--gold)/60" />
 
-                  {/* Bottom content */}
                   <div className="absolute inset-x-0 bottom-0 z-20 p-6 md:p-7">
-                    <div className="translate-y-0 opacity-100 transition-all duration-500 md:translate-y-6 md:opacity-0 md:group-hover/card:translate-y-0 md:group-hover/card:opacity-100">
-                      <h3 className="text-3xl font-bold text-white">
+                    <div className="translate-y-0 transition-transform duration-500 ease-out group-hover/card:-translate-y-1">
+                      <h3 className="font-display text-3xl leading-tight text-white">
                         {service.title}
                       </h3>
 
-                      <div className="mt-5 h-0.5 w-full origin-left rounded-4xl bg-gradient-to-r from-(--primary) via-(--primary)/60 to-transparent transition-transform duration-700 md:w-full md:scale-x-0 md:group-hover/card:scale-x-100" />
+                      <div className="hairline mt-5 w-full" />
 
-                      <p className="mt-4 max-w-[95%] text-base leading-relaxed text-white/80 md:opacity-0 md:transition-all md:duration-500 md:delay-100 md:group-hover/card:opacity-100">
+                      <p className="mt-4 max-w-[95%] text-sm md:text-base leading-relaxed text-white/85 opacity-100 transition-all duration-500">
                         {service.description}
                       </p>
 
-                      <a
-                        href={whatsappLink}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="group/btn relative mt-5 inline-flex h-11 items-center justify-center overflow-hidden bg-(--primary) px-5 font-semibold text-black transition-all duration-300 hover:brightness-105 [clip-path:polygon(12px_0,100%_0,calc(100%-12px)_100%,0_100%)]"
-                      >
-                        <span className="flex items-center gap-2 transition-all duration-300 group-hover/btn:-translate-y-full group-hover/btn:opacity-0">
-                          <span>Agendar avaliação</span>
-                        </span>
+                      <div className="relative mt-6 inline-flex h-11 items-center justify-center overflow-hidden rounded-full bg-(--gold-deep) px-6 text-sm font-semibold text-(--primary-foreground) opacity-100 shadow-[0_8px_24px_rgba(204,178,129,0.22)] transition-all duration-500 group-hover/card:-translate-y-0.5 group-hover/card:shadow-[0_0_24px_rgba(204,178,129,0.45)]">
+                        <span className="absolute inset-0 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover/card:translate-x-[120%]" />
 
-                        <span className="absolute inset-0 flex translate-y-full items-center justify-center gap-2 opacity-0 transition-all duration-300 group-hover/btn:translate-y-0 group-hover/btn:opacity-100">
-                          <span>Agendar avaliação</span>
-                        </span>
-                      </a>
+                        <span className="relative z-10">Saiba mais</span>
+                      </div>
                     </div>
                   </div>
-                </article>
+                </a>
               </motion.div>
             );
           })}
