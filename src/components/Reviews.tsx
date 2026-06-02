@@ -125,8 +125,6 @@ const Reviews = () => {
     return STATIC_REVIEWS.length ? sum / STATIC_REVIEWS.length : 0;
   }, []);
 
-  const totalRatings = STATIC_REVIEWS.length;
-
   return (
     <section id="avaliacoes" className="py-20 bg-(--background)">
       <div className="container mx-auto px-6 md:px-8">
