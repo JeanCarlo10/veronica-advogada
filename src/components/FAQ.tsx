@@ -131,7 +131,7 @@ const FAQ = () => {
                   >
                     <AccordionTrigger className="group cursor-pointer py-5 text-left hover:no-underline [&>svg]:hidden">
                       <div className="flex w-full items-center justify-between gap-6">
-                        <span className="pr-2 text-base leading-6 text-(--primary) transition-colors duration-300 group-hover:text-(--primary)">
+                        <span className="pr-2 text-base leading-6 text-(--foreground) transition-colors duration-300">
                           {faq.question}
                         </span>
 
