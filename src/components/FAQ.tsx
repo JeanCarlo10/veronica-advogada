@@ -10,44 +10,44 @@ import { SlideUp } from "@/animations";
 
 const faqs = [
   {
-    question: "Quanto tempo dura a vitrificação de pintura?",
+    question: "Quem tem direito à aposentadoria?",
     answer:
-      "A durabilidade pode variar conforme o produto aplicado, a rotina de uso do veículo e os cuidados de manutenção. Em geral, a vitrificação oferece proteção prolongada e ajuda a manter o brilho e a facilidade na limpeza por muito mais tempo.",
+      "O direito à aposentadoria depende de fatores como idade, tempo de contribuição, atividade exercida e regras de transição vigentes. Cada caso deve ser analisado individualmente para identificar a modalidade mais vantajosa.",
   },
   {
-    question: "Qual a diferença entre polimento técnico e vitrificação?",
+    question: "Posso me aposentar mesmo sem ter contribuído por muitos anos?",
     answer:
-      "O polimento técnico corrige imperfeições como microrriscos, marcas leves e perda de brilho da pintura. Já a vitrificação é uma etapa de proteção, aplicada após a correção, criando uma camada que ajuda a preservar o acabamento e facilitar a conservação.",
+      "Em algumas situações, é possível utilizar períodos de trabalho não registrados corretamente, atividade rural, tempo especial ou outros vínculos para complementar o tempo necessário. Uma análise previdenciária pode identificar essas possibilidades.",
   },
   {
-    question: "PPF protege contra quais tipos de danos?",
+    question: "Meu benefício foi negado pelo INSS. O que devo fazer?",
     answer:
-      "O PPF é uma película transparente de proteção que ajuda a preservar a pintura contra riscos leves, impactos de pequenas pedras, sujeiras do uso diário, marcas superficiais e desgaste natural, mantendo o visual do veículo por mais tempo.",
+      "O indeferimento não significa o fim do processo. É possível apresentar recurso administrativo ou buscar a revisão judicial da decisão, dependendo do caso e da documentação disponível.",
   },
   {
-    question: "A higienização interna remove odores e manchas?",
+    question: "Tenho direito ao auxílio-doença?",
     answer:
-      "Sim. A higienização interna é feita para limpar profundamente bancos, carpetes, forros, painel e demais superfícies, ajudando a remover sujeiras, manchas e odores, além de proporcionar mais conforto e sensação de cuidado no interior do veículo.",
+      "O auxílio por incapacidade temporária pode ser concedido ao segurado que esteja impossibilitado de trabalhar em razão de doença ou acidente, desde que atendidos os requisitos legais e comprovada a incapacidade por perícia médica.",
   },
   {
-    question: "Com que frequência devo fazer estética automotiva no meu carro?",
+    question: "Como funciona o planejamento previdenciário?",
     answer:
-      "Isso depende do uso do veículo, da exposição ao sol, chuva e sujeira, além do padrão de cuidado desejado. Lavagens técnicas e manutenções periódicas ajudam a preservar os resultados, enquanto serviços como polimento, vitrificação e higienização podem ser programados conforme a necessidade.",
+      "O planejamento previdenciário é um estudo detalhado do histórico contributivo do segurado, permitindo identificar a melhor estratégia para aposentadoria, reduzir riscos e buscar o benefício mais vantajoso possível.",
   },
   {
-    question: "O polimento remove todos os riscos da pintura?",
+    question: "Posso revisar o valor da minha aposentadoria?",
     answer:
-      "O polimento técnico melhora significativamente o aspecto da pintura e pode remover ou suavizar microrriscos, marcas leves e opacidade. Porém, riscos mais profundos dependem de avaliação técnica, pois nem sempre é possível eliminá-los completamente sem comprometer o verniz.",
+      "Sim. Em determinadas situações, erros de cálculo, períodos não considerados ou alterações legislativas podem justificar uma revisão do benefício. É importante realizar uma análise especializada para verificar a viabilidade do pedido.",
   },
   {
-    question: "Depois da vitrificação ou do PPF, quais cuidados devo ter?",
+    question: "Quem tem direito à pensão por morte?",
     answer:
-      "Após a aplicação, é importante seguir as orientações de manutenção, evitando produtos agressivos, lavagens inadequadas e métodos abrasivos. Com os cuidados corretos, o acabamento permanece mais bonito, protegido e com melhor desempenho por mais tempo.",
+      "A pensão por morte é destinada aos dependentes do segurado falecido, observando os requisitos previstos em lei. O direito e o valor do benefício variam conforme a situação familiar e previdenciária do falecido.",
   },
   {
-    question: "Vocês atendem veículos premium e esportivos?",
+    question: "Quanto tempo demora um processo previdenciário?",
     answer:
-      "Sim. Trabalhamos com estética automotiva voltada para veículos que exigem alto padrão de acabamento, proteção e atenção aos detalhes, sempre com processos cuidadosos, produtos de qualidade e foco em resultado premium.",
+      "O prazo pode variar de acordo com a complexidade do caso, a fase do processo e os órgãos responsáveis pela análise. Alguns pedidos são resolvidos administrativamente, enquanto outros podem exigir atuação judicial.",
   },
 ];
 
@@ -84,24 +84,35 @@ const FAQ = () => {
     <section id="dicas" className="bg-(--gold-soft)/20 py-20">
       <div className="container mx-auto overflow-hidden px-6 md:px-8">
         <div className="mb-12 text-center">
+          <motion.span
+            variants={SlideUp(0.1)}
+            initial="initial"
+            whileInView="animate"
+            viewport={{ once: true }}
+            className="text-xs tracking-[0.3em] uppercase text-(--gold-deep)"
+          >
+            Dúvidas
+          </motion.span>
+
           <motion.h2
             variants={SlideUp(0.2)}
             initial="initial"
             whileInView="animate"
-            className="mb-4 text-4xl font-bold text-(--primary) md:text-5xl"
+            viewport={{ once: true }}
+            className="mt-4 mb-4 font-display text-3xl md:text-4xl lg:text-5xl text-(--foreground)"
           >
-            Dúvidas sobre estética automotiva
+            Confira as perguntas mais frequentes
+            <br className="hidden md:block" />
+            <span className="md:inline"> e tire suas dúvidas</span>
           </motion.h2>
 
-          <motion.p
+          <motion.div
             variants={SlideUp(0.4)}
             initial="initial"
             whileInView="animate"
-            className="mx-auto max-w-2xl text-lg text-(--muted-foreground)"
-          >
-            Tire suas principais dúvidas sobre proteção, acabamento e cuidados
-            premium para o seu veículo.
-          </motion.p>
+            viewport={{ once: true }}
+            className="hairline mt-8 mx-auto w-32"
+          ></motion.div>
         </div>
 
         <div className="mx-auto">
@@ -116,17 +127,17 @@ const FAQ = () => {
                 <motion.div key={index} variants={item}>
                   <AccordionItem
                     value={`item-${index}`}
-                    className="overflow-hidden rounded-2xl border border-white/10 bg-(--card) px-5 transition-colors duration-300 data-[state=open]:border-(--primary)"
+                    className="overflow-hidden rounded-2xl border border-white bg-(--card) px-5 transition-colors duration-300 data-[state=open]:border-(--primary)"
                   >
-                    <AccordionTrigger className="group cursor-pointer py-5 text-left text-white hover:no-underline [&>svg]:hidden">
+                    <AccordionTrigger className="group cursor-pointer py-5 text-left hover:no-underline [&>svg]:hidden">
                       <div className="flex w-full items-center justify-between gap-6">
-                        <span className="pr-2 text-base leading-6 text-white transition-colors duration-300 group-hover:text-(--primary)">
+                        <span className="pr-2 text-base leading-6 text-(--primary) transition-colors duration-300 group-hover:text-(--primary)">
                           {faq.question}
                         </span>
 
-                        <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-white/15 transition-all duration-300 group-hover:bg-white/25">
-                          <span className="absolute h-0.5 w-4 rounded-full bg-white transition-all duration-300" />
-                          <span className="absolute h-4 w-0.5 rounded-full bg-white transition-all duration-300 group-data-[state=open]:scale-y-0" />
+                        <span className="relative flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-(--gold-soft)/15 transition-all duration-300 group-hover:bg-(--gold-soft)/25">
+                          <span className="absolute h-0.5 w-4 rounded-full bg-(--primary) transition-all duration-300" />
+                          <span className="absolute h-4 w-0.5 rounded-full bg-(--primary) transition-all duration-300 group-data-[state=open]:scale-y-0" />
                         </span>
                       </div>
                     </AccordionTrigger>
