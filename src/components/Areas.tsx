@@ -158,8 +158,8 @@ const Areas = () => {
                         {service.description}
                       </p>
 
-                      <div className="mt-6 inline-flex items-center gap-2 text-(--gold-soft) font-medium uppercase">
-                        <span>Saber mais</span>
+                      <div className="mt-6 inline-flex items-center gap-2 text-(--gold-soft) font-medium ">
+                        <span>Saiba mais</span>
                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/card:translate-x-2" />
                       </div>
                     </div>

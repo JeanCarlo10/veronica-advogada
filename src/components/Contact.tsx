@@ -159,7 +159,7 @@ const Contact = () => {
                   href={MAPS_LINK}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="md:col-span-2 group transition-all duration-300 hover:-translate-y-1"
+                  className="md:col-span-2 flex flex-col items-center md:items-start text-center md:text-left group transition-all duration-300 hover:-translate-y-1"
                 >
                   <MapPin className="w-5 h-5 text-(--gold-deep) group-hover:scale-110 transition-transform" />
                   <p className="mt-2 text-sm group-hover:text-(--gold-deep)">
