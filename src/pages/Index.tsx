@@ -3,7 +3,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 
 const Reviews = React.lazy(() => import("@/components/Reviews"));
-const Services = React.lazy(() => import("@/components/Services"));
+const Areas = React.lazy(() => import("@/components/Areas"));
 const Differentials = React.lazy(() => import("@/components/Differentials"));
 const About = React.lazy(() => import("@/components/About"));
 const FAQ = React.lazy(() => import("@/components/FAQ"));
@@ -91,7 +91,7 @@ const Index = () => {
 
         <LazyOnView>
           <Suspense fallback={null}>
-            <Services />
+            <Areas />
           </Suspense>
         </LazyOnView>
 

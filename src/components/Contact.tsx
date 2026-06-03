@@ -2,7 +2,6 @@ import { motion } from "framer-motion";
 import { FaWhatsapp } from "react-icons/fa";
 import { Mail, MapPin } from "lucide-react";
 import { SlideUp } from "@/animations";
-
 import VeronicaImage from "@/assets/About.png";
 
 const WHATSAPP_NUMBER = "45991010233";
@@ -13,6 +12,8 @@ const WHATSAPP_TEXT =
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   WHATSAPP_TEXT,
 )}`;
+
+const MAPS_LINK = "https://maps.app.goo.gl/TBEZwSznr4E8xvRW7";
 
 const Contact = () => {
   return (
@@ -45,7 +46,7 @@ const Contact = () => {
           </motion.h2>
 
           <motion.div
-            variants={SlideUp(0.4)}
+            variants={SlideUp(0.3)}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
@@ -53,38 +54,45 @@ const Contact = () => {
           ></motion.div>
 
           <motion.p
-            variants={SlideUp(0.3)}
+            variants={SlideUp(0.4)}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="
-              mt-8
-              text-lg
-              md:text-xl
-              text-(--muted-foreground)
-              max-w-2xl
-              mx-auto
-              leading-relaxed
-            "
+            className="mt-8 text-lg md:text-xl text-(--muted-foreground) max-w-2xl mx-auto leading-relaxed"
           >
             Uma orientação previdenciária adequada pode fazer toda a diferença
             na conquista dos seus direitos e na segurança do seu futuro.
           </motion.p>
 
           {/* CTA */}
-          <motion.a
-            variants={SlideUp(0.6)}
+          <motion.div
+            variants={SlideUp(0.5)}
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            href={WHATSAPP_LINK}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 mt-10 px-10 py-5 rounded-full bg-(--primary) text-white text-lg font-medium transition-all hover:scale-105 hover:shadow-xl"
+            className="mt-10 flex justify-center"
           >
-            <FaWhatsapp className="w-6 h-6" />
-            Falar no WhatsApp
-          </motion.a>
+            <a
+              href={WHATSAPP_LINK}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-4 rounded-full bg-(--primary) px-7 py-3 text-white font-medium tracking-wide transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(153,114,56,0.25)]"
+            >
+              <span>Falar no WhatsApp</span>
+
+              <span className="relative flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shrink-0 transition-transform duration-500 group-hover:translate-x-1">
+                <FaWhatsapp
+                  size={22}
+                  className="absolute text-(--primary) transition-all duration-500 ease-in-out group-hover:translate-x-[40px]"
+                />
+
+                <FaWhatsapp
+                  size={22}
+                  className="absolute text-(--primary) -translate-x-[40px] transition-all duration-500 ease-in-out group-hover:translate-x-0"
+                />
+              </span>
+            </a>
+          </motion.div>
         </div>
 
         {/* CARD ADVOGADA */}
@@ -101,48 +109,21 @@ const Contact = () => {
               <img
                 src={VeronicaImage}
                 alt="Verônica Fernandes"
-                className="
-                  w-52
-                  h-52
-                  object-cover
-                  rounded-full
-                  border-4
-                  border-(--gold-soft)
-                "
+                className="w-52 h-52 object-cover rounded-full border-4 border-(--gold-soft)"
               />
             </div>
 
             {/* TEXTO */}
             <div className="flex-1 text-center md:text-left">
-              <h3
-                className="
-                  font-display
-                  text-3xl
-                  text-(--foreground)
-                "
-              >
+              <h3 className="font-display text-3xl text-(--foreground)">
                 Verônica Scheffer Weiss Fernandes
               </h3>
 
-              <p
-                className="
-                  mt-2
-                  text-(--gold-deep)
-                  tracking-wide
-                  uppercase
-                  text-sm
-                "
-              >
+              <p className="mt-2 text-(--gold-deep) tracking-wide uppercase text-sm">
                 Advogada Previdenciária
               </p>
 
-              <p
-                className="
-                  mt-6
-                  text-(--muted-foreground)
-                  leading-relaxed
-                "
-              >
+              <p className="mt-6 text-(--muted-foreground) leading-relaxed">
                 Atendimento jurídico voltado à proteção dos direitos
                 previdenciários, com acompanhamento personalizado, clareza nas
                 orientações e comprometimento em cada etapa do processo.
@@ -150,28 +131,42 @@ const Contact = () => {
 
               {/* CONTATOS */}
               <div className="grid md:grid-cols-2 gap-8 mt-8">
-                {/* WhatsApp */}
-                <div>
-                  <FaWhatsapp className="mx-auto md:mx-0 w-5 h-5 text-(--gold-deep)" />
-                  <p className="mt-2 text-sm ">(45) 99101-0233</p>
-                </div>
+                <a
+                  href={WHATSAPP_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex flex-col items-center md:items-start group transition-all duration-300 hover:-translate-y-1"
+                >
+                  <FaWhatsapp className="w-5 h-5 text-(--gold-deep) group-hover:scale-110 transition-transform" />
 
-                {/* Email */}
-                <div>
-                  <Mail className="mx-auto md:mx-0 w-5 h-5 text-(--gold-deep)" />
-                  <p className="mt-2 text-sm">
+                  <p className="mt-2 text-sm group-hover:text-(--gold-deep)">
+                    (45) 99101-0233
+                  </p>
+                </a>
+
+                <a
+                  href="mailto:veronicafernandes.adv@gmail.com"
+                  className="flex flex-col items-center md:items-start group transition-all duration-300 hover:-translate-y-1"
+                >
+                  <Mail className="w-5 h-5 text-(--gold-deep) group-hover:scale-110 transition-transform" />
+
+                  <p className="mt-2 text-sm group-hover:text-(--gold-deep)">
                     veronicafernandes.adv@gmail.com
                   </p>
-                </div>
+                </a>
 
-                {/* Endereço */}
-                <div className="md:col-span-2">
-                  <MapPin className="mx-auto md:mx-0 w-5 h-5 text-(--gold-deep)" />
-                  <p className="mt-2 text-sm">
+                <a
+                  href={MAPS_LINK}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="md:col-span-2 group transition-all duration-300 hover:-translate-y-1"
+                >
+                  <MapPin className="w-5 h-5 text-(--gold-deep) group-hover:scale-110 transition-transform" />
+                  <p className="mt-2 text-sm group-hover:text-(--gold-deep)">
                     Av. Valdomiro Faremberger, 237 - Três Lagoas - Foz do Iguaçu
                     - PR
                   </p>
-                </div>
+                </a>
               </div>
             </div>
           </div>

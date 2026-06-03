@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { SlideUp } from "@/animations";
+import { ArrowRight } from "lucide-react";
 
 import AposentadoriaBg from "@/assets/Aposentadoria.jpg";
 import RevisaoBg from "@/assets/Revisao.jpg";
@@ -75,9 +76,9 @@ const services = [
   },
 ];
 
-const Services = () => {
+const Areas = () => {
   return (
-    <section id="servicos" className="relative py-24 bg-(--background)">
+    <section id="areas" className="relative py-24 bg-(--background)">
       <div className="container mx-auto px-4">
         <div className="mb-16 text-center">
           <motion.span
@@ -157,10 +158,9 @@ const Services = () => {
                         {service.description}
                       </p>
 
-                      <div className="relative mt-6 inline-flex h-11 items-center justify-center overflow-hidden rounded-full bg-(--gold-deep) px-6 text-sm font-semibold text-(--primary-foreground) opacity-100 shadow-[0_8px_24px_rgba(204,178,129,0.22)] transition-all duration-500 group-hover/card:-translate-y-0.5 group-hover/card:shadow-[0_0_24px_rgba(204,178,129,0.45)]">
-                        <span className="absolute inset-0 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover/card:translate-x-[120%]" />
-
-                        <span className="relative z-10">Saiba mais</span>
+                      <div className="mt-6 inline-flex items-center gap-2 text-(--gold-soft) font-medium uppercase">
+                        <span>Saber mais</span>
+                        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/card:translate-x-2" />
                       </div>
                     </div>
                   </div>
@@ -174,4 +174,4 @@ const Services = () => {
   );
 };
 
-export default Services;
+export default Areas;

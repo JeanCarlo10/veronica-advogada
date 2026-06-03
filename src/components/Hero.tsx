@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
 import HeroImage from "@/assets/Hero.png";
+import { ArrowRight } from "lucide-react";
+
+const WHATSAPP_NUMBER = "45991010233";
+
+const WHATSAPP_TEXT = "Olá! Gostaria de agendar.";
+
+const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+  WHATSAPP_TEXT,
+)}`;
 
 const Hero = () => {
   return (
@@ -52,19 +61,30 @@ const Hero = () => {
               className="mt-10 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4"
             >
               <a
-                href="#contato"
-                className="group relative inline-flex items-center justify-center gap-2 overflow-hidden bg-(--gold-deep) text-(--primary-foreground) px-8 py-4 rounded-full text-sm font-semibold hover:shadow-elevated hover:-translate-y-0.5 transition-all min-w-[210px]"
+                href={WHATSAPP_LINK}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group w-[320px] h-[64px] inline-flex items-center justify-between rounded-full bg-(--primary) px-7 text-white font-medium transition-all duration-500 hover:-translate-y-1 hover:shadow-[0_20px_50px_rgba(153,114,56,0.25)]"
               >
-                <span className="absolute inset-0 translate-x-[-120%] bg-gradient-to-r from-transparent via-white/25 to-transparent transition-transform duration-700 group-hover:translate-x-[120%]" />
-                <span className="relative z-10">Agendar consulta</span>
-                <span className="relative z-10 transition-transform group-hover:translate-x-1">
-                  →
+                <span className="text-lg">Agendar consulta</span>
+
+                <span className="relative flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white shrink-0">
+                  <ArrowRight
+                    size={24}
+                    className="absolute text-(--primary) transition-all duration-500 ease-in-out group-hover:translate-x-[50px]"
+                  />
+
+                  <ArrowRight
+                    size={24}
+                    className="absolute text-(--primary) -translate-x-[50px] transition-all duration-500 ease-in-out group-hover:translate-x-0"
+                  />
                 </span>
               </a>
 
+              {/* BOTÃO SECUNDÁRIO */}
               <a
                 href="#areas"
-                className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-sm font-medium border border-(--gold) text-(--foreground) hover:bg-(--gold-soft)/30 hover:-translate-y-0.5 transition-all min-w-[230px]"
+                className="w-[320px] h-[64px] inline-flex items-center justify-center rounded-full border border-(--gold) text-(--foreground) text-lg font-medium transition-all duration-300 hover:bg-(--gold-soft)/30 hover:-translate-y-1"
               >
                 Conhecer áreas de atuação
               </a>
@@ -119,9 +139,35 @@ const Hero = () => {
 
               <motion.div
                 initial={{ opacity: 0, y: 24, scale: 0.96 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{ duration: 0.75, delay: 0.95, ease: "easeOut" }}
-                className="absolute -bottom-4 left-6 right-6 bg-(--card) rounded-xl shadow-card px-5 py-3 flex items-center gap-3"
+                animate={{
+                  opacity: 1,
+                  scale: 1,
+                  y: [0, -10, 0],
+                  boxShadow: [
+                    "0 10px 25px rgba(0,0,0,0.10)",
+                    "0 20px 40px rgba(0,0,0,0.16)",
+                    "0 10px 25px rgba(0,0,0,0.10)",
+                  ],
+                }}
+                transition={{
+                  opacity: {
+                    duration: 0.75,
+                    delay: 0.95,
+                    ease: "easeOut",
+                  },
+                  scale: {
+                    duration: 0.75,
+                    delay: 0.95,
+                    ease: "easeOut",
+                  },
+                  y: {
+                    duration: 4,
+                    repeat: Infinity,
+                    repeatType: "reverse",
+                    ease: "easeInOut",
+                  },
+                }}
+                className="absolute -bottom-6 left-6 right-6 bg-(--card) rounded-xl px-5 py-3 flex items-center gap-3 backdrop-blur-sm"
               >
                 <div className="w-10 h-10 rounded-full bg-(--gold-deep) flex items-center justify-center text-(--primary-foreground) font-display text-lg">
                   VF
