@@ -241,7 +241,7 @@ export default function Header() {
         {isMobile && isMobileMenuOpen && (
           <>
             <motion.div
-              className="fixed inset-0 bg-white/10 backdrop-blur-xs "
+              className="fixed inset-0 z-40 bg-white/10 backdrop-blur-xs"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -250,7 +250,7 @@ export default function Header() {
 
             <motion.nav
               aria-label="Menu móvel"
-              className="fixed right-0 top-0 z-50 flex h-dvh w-[85%] max-w-[380px] flex-col bg-[rgba(255,255,255,0.92)] backdrop-blur-2xl px-8 pt-24 pb-8 shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
+              className="fixed right-0 top-0 z-100 flex h-dvh w-[85%] max-w-[380px] flex-col bg-white px-8 pt-24 pb-8 shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
