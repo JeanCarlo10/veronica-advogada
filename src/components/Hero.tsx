@@ -35,13 +35,12 @@ const Hero = () => {
       <div className="relative z-10 container mx-auto px-6 lg:px-8 min-h-screen flex items-center">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-14 lg:gap-20 items-center w-full py-24 lg:py-20">
           <div className="lg:col-span-7 text-center lg:text-left">
-            <motion.h1
-              initial={{ opacity: 0, y: 34, scale: 0.98 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              transition={{ duration: 0.85, delay: 0.22, ease: "easeOut" }}
-              className="font-bold text-(--gold-deep) text-5xl sm:text-6xl lg:text-7xl xl:text-7xl leading-[1.02] max-w-4xl"
-            >
-              Advocacia previdenciária com estratégia, clareza e segurança
+            <motion.h1 className="font-bold text-5xl sm:text-6xl lg:text-7xl xl:text-7xl leading-[1.02] max-w-4xl text-(--foreground)">
+              Advocacia previdenciária
+              <br />
+              com <span className="text-(--gold-deep)">estratégia, </span>
+              <span className="text-(--gold-deep)">clareza</span> e{" "}
+              <span className="text-(--gold-deep)">segurança</span>
             </motion.h1>
 
             <motion.p

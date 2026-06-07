@@ -4,6 +4,12 @@ import { Button } from "@/components/ui/button";
 import { useIsMobile } from "@/hooks/use-mobile";
 import logoImage from "@/assets/Logo_Horizontal.png";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 const navItems = [
   { label: "Início", id: "home" },
@@ -12,11 +18,12 @@ const navItems = [
   { label: "Contato", id: "contact" },
 ];
 
-const Header = () => {
+export default function Header() {
   const isMobile = useIsMobile();
+
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     let ticking = false;
@@ -25,111 +32,112 @@ const Header = () => {
       if (ticking) return;
 
       ticking = true;
-      window.requestAnimationFrame(() => {
-        setIsScrolled(window.scrollY > 90);
+
+      requestAnimationFrame(() => {
+        setIsScrolled(window.scrollY > 40);
         ticking = false;
       });
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
     handleScroll();
+
+    window.addEventListener("scroll", handleScroll, {
+      passive: true,
+    });
 
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  useEffect(() => {
-    if (!isMobile) setIsMobileMenuOpen(false);
-  }, [isMobile]);
+  const scrollToSection = useCallback(
+    (id: string) => {
+      const element = document.getElementById(id);
 
-  const scrollToSection = useCallback((id: string) => {
-    const el = document.getElementById(id);
-    if (!el) return;
+      if (!element) return;
 
-    const headerOffset = 80;
-    const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-    const offsetPosition = elementPosition - headerOffset;
+      const headerOffset = isMobile ? 95 : 90;
 
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
+      const y =
+        element.getBoundingClientRect().top + window.pageYOffset - headerOffset;
 
-    setIsMobileMenuOpen(false);
-  }, []);
+      window.scrollTo({
+        top: y,
+        behavior: "smooth",
+      });
+
+      setIsMobileMenuOpen(false);
+    },
+    [isMobile],
+  );
 
   useEffect(() => {
     const handleActiveSection = () => {
-      if (isMobileMenuOpen) return;
-
-      const headerOffset = 120;
-
       const sections = navItems
         .map((item) => document.getElementById(item.id))
         .filter(Boolean) as HTMLElement[];
 
-      if (!sections.length) return;
-
-      let currentSection = "home";
-      let smallestDistance = Number.POSITIVE_INFINITY;
+      let current = "home";
 
       sections.forEach((section) => {
         const rect = section.getBoundingClientRect();
-        const distance = Math.abs(rect.top - headerOffset);
 
-        if (rect.top <= headerOffset && distance < smallestDistance) {
-          smallestDistance = distance;
-          currentSection = section.id;
+        if (rect.top <= 140) {
+          current = section.id;
         }
       });
 
-      if (window.scrollY < 120) {
-        currentSection = "home";
-      }
-
-      setActiveSection(currentSection);
+      setActiveSection(current);
     };
 
     handleActiveSection();
-    window.addEventListener("scroll", handleActiveSection, { passive: true });
-    window.addEventListener("resize", handleActiveSection);
 
-    return () => {
-      window.removeEventListener("scroll", handleActiveSection);
-      window.removeEventListener("resize", handleActiveSection);
-    };
-  }, [isMobileMenuOpen]);
+    window.addEventListener("scroll", handleActiveSection, {
+      passive: true,
+    });
+
+    return () => window.removeEventListener("scroll", handleActiveSection);
+  }, []);
 
   useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
+    document.body.style.overflow = isMobileMenuOpen ? "hidden" : "unset";
 
     return () => {
-      document.body.style.overflow = "auto";
+      document.body.style.overflow = "unset";
     };
   }, [isMobileMenuOpen]);
 
   return (
     <header
-      className={`fixed left-0 right-0 top-0 z-50 h-20 transition-all duration-300 ${
-        isScrolled
-          ? "bg-(--background)/85 backdrop-blur-md border-b border-(--border)/70"
-          : "bg-transparent"
-      }`}
+      className={`
+        fixed
+        inset-x-0
+        top-0
+        z-50
+        h-20
+        transition-all
+        duration-500
+        ease-out
+        ${
+          isScrolled
+            ? `
+                bg-[rgba(248,246,242,0.92)]
+                backdrop-blur-xl
+                border-b
+                border-[#e8dcc5]
+                shadow-[0_10px_40px_rgba(155,117,56,0.08)]
+              `
+            : "bg-transparent"
+        }
+      `}
     >
-      <div className="container mx-auto px-6 md:px-8">
+      <div className="container mx-auto h-full px-6 md:px-8">
         <motion.div
-          initial={{ y: -100 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="flex h-20 items-center justify-between"
+          initial={{ y: -70, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.6 }}
+          className="flex h-full items-center justify-between"
         >
-          {/* Logo */}
           <a
             href="#home"
-            className="cursor-pointer"
             onClick={(e) => {
               e.preventDefault();
               scrollToSection("home");
@@ -137,44 +145,63 @@ const Header = () => {
           >
             <img
               src={logoImage}
-              alt="Logo - Verônica Fernandes"
-              width={110}
-              height={70}
+              alt="Verônica Fernandes"
               loading="eager"
               decoding="async"
-              className="h-auto w-[clamp(320px,8vw,110px)]"
+              className="
+                h-auto
+                w-[130px]
+                md:w-[150px]
+                lg:w-[170px]
+              "
             />
           </a>
 
-          {/* Desktop Navigation */}
           {!isMobile && (
-            <nav
-              className="flex items-center gap-14"
-              aria-label="Menu principal"
-            >
+            <nav className="flex items-center gap-12">
               {navItems.map((item) => {
-                const isActive = activeSection === item.id;
+                const active = activeSection === item.id;
 
                 return (
                   <a
                     key={item.id}
                     href={`#${item.id}`}
-                    // className="text-sm text-muted-foreground hover:text-gold transition-colors relative after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-gold-deep after:transition-all hover:after:w-full"
-                    className={`group relative text-lg font-medium tracking-[0.18em] transition-colors duration-300 ${
-                      isActive
-                        ? "text-(--primary)"
-                        : "text-(--secondary-foreground) hover:text-(--primary)"
-                    }`}
                     onClick={(e) => {
                       e.preventDefault();
                       scrollToSection(item.id);
                     }}
+                    className={`
+                      group
+                      relative
+                      text-sm
+                      font-medium
+                      tracking-[0.20em]
+                      uppercase
+                      transition-all
+                      duration-300
+                      hover:-translate-y-0.5
+                      ${
+                        active
+                          ? "text-(--gold-deep)"
+                          : "text-(--secondary-foreground)"
+                      }
+                    `}
                   >
                     {item.label}
+
                     <span
-                      className={`absolute -bottom-2 left-1/2 h-px -translate-x-1/2 bg-(--primary) transition-all duration-500 ease-out ${
-                        isActive ? "w-full" : "w-0 group-hover:w-full"
-                      }`}
+                      className={`
+                        absolute
+                        -bottom-2
+                        left-1/2
+                        h-px
+                        -translate-x-1/2
+                        bg-(--gold-deep)
+                        transition-all
+                        duration-500
+                        ease-[cubic-bezier(0.22,1,0.36,1)]
+                        ${active ? "w-full" : "w-0 group-hover:w-full"}
+                      `}
                     />
                   </a>
                 );
@@ -182,124 +209,167 @@ const Header = () => {
             </nav>
           )}
 
-          {/* Mobile Menu Button */}
           {isMobile && (
             <button
-              aria-label={
-                isMobileMenuOpen
-                  ? "Fechar menu de navegação"
-                  : "Abrir menu de navegação"
-              }
-              className="cursor-pointer"
               onClick={() => setIsMobileMenuOpen((prev) => !prev)}
+              aria-label="Abrir menu"
             >
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col gap-1.5">
                 <motion.div
-                  className="h-0.5 w-6 bg-white"
+                  className="h-0.5 w-6 bg-(--gold-deep)"
                   animate={{
                     rotate: isMobileMenuOpen ? 45 : 0,
-                    y: isMobileMenuOpen ? 6 : 0,
+                    y: isMobileMenuOpen ? 8 : 0,
                   }}
-                  transition={{ duration: 0.3 }}
                 />
+
                 <motion.div
-                  className="h-0.5 w-6 bg-white"
+                  className="h-0.5 w-6 bg-(--gold-deep)"
                   animate={{
                     opacity: isMobileMenuOpen ? 0 : 1,
                   }}
-                  transition={{ duration: 0.3 }}
                 />
+
                 <motion.div
-                  className="h-0.5 w-6 bg-white"
+                  className="h-0.5 w-6 bg-(--gold-deep)"
                   animate={{
                     rotate: isMobileMenuOpen ? -45 : 0,
-                    y: isMobileMenuOpen ? -6 : 0,
+                    y: isMobileMenuOpen ? -8 : 0,
                   }}
-                  transition={{ duration: 0.3 }}
                 />
               </div>
             </button>
           )}
         </motion.div>
+      </div>
 
-        {/* Mobile Navigation */}
-        <AnimatePresence>
-          {isMobile && isMobileMenuOpen && (
-            <>
-              <motion.div
-                className="fixed inset-0 z-40 bg-black/80"
+      <AnimatePresence>
+        {isMobile && isMobileMenuOpen && (
+          <>
+            <motion.div
+              className="fixed inset-0 bg-white/10 backdrop-blur-xs "
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            <motion.nav
+              aria-label="Menu móvel"
+              className="fixed right-0 top-0 z-50 flex h-dvh w-[85%] max-w-[380px] flex-col bg-[rgba(255,255,255,0.92)] backdrop-blur-2xl px-8 pt-24 pb-8 shadow-[0_20px_80px_rgba(0,0,0,0.12)]"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{
+                duration: 0.45,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <button
+                aria-label="Fechar menu"
                 onClick={() => setIsMobileMenuOpen(false)}
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.25 }}
-              />
-
-              <motion.nav
-                aria-label="Menu móvel"
-                className="fixed right-0 top-0 z-50 flex h-dvh w-[86%] max-w-[380px] flex-col bg-(--secondary) px-8 pb-8 pt-24 shadow-2xl"
-                initial={{ x: "100%" }}
-                animate={{ x: 0 }}
-                exit={{ x: "100%" }}
-                transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
+                className="absolute right-5 cursor-pointer top-5 text-(--gold-deep) transition-transform duration-300 hover:rotate-90"
               >
-                <button
-                  aria-label="Fechar menu de navegação"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="absolute right-5 top-5 cursor-pointer text-white"
-                >
-                  <X size={28} />
-                </button>
+                <X size={26} />
+              </button>
 
-                <div className="flex flex-1 flex-col justify-between">
-                  <div className="flex flex-col gap-10">
-                    {navItems.map((item) => {
-                      const isActive = activeSection === item.id;
+              <div className="flex flex-1 flex-col">
+                <div>
+                  {navItems.map((item) => {
+                    const active = activeSection === item.id;
 
-                      return (
-                        <a
-                          key={item.id}
-                          href={`#${item.id}`}
-                          onClick={(e) => {
-                            e.preventDefault();
-                            scrollToSection(item.id);
-                          }}
-                          className={`relative w-fit text-left text-3xl transition-colors duration-300 ${
-                            isActive
-                              ? "text-(--primary)"
-                              : "text-white hover:text-(--primary)"
-                          }`}
-                        >
+                    return (
+                      <a
+                        key={item.id}
+                        href={`#${item.id}`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          scrollToSection(item.id);
+                        }}
+                        className={`group flex items-center justify-between border-b border-[#E8DDC9] py-6 text-[2rem] font-light transition-all duration-300 ${active ? "text-(--gold-deep)" : "text-(--foreground) hover:text-(--gold-deep)"}`}
+                      >
+                        <span className="transition-transform duration-300 group-hover:translate-x-3">
                           {item.label}
-                          <span
-                            className={`absolute -bottom-2 left-0 h-px bg-(--primary) transition-all duration-500 ${
-                              isActive ? "w-full" : "w-0"
-                            }`}
-                          />
-                        </a>
-                      );
-                    })}
-                  </div>
+                        </span>
+                      </a>
+                    );
+                  })}
+                </div>
 
+                <div className="mt-auto pt-10">
                   <Button
                     onClick={() => scrollToSection("contact")}
-                    className="group relative mt-10 w-full cursor-pointer overflow-hidden rounded-none border-(--border) bg-(--primary) px-6 py-6 text-lg font-bold text-black [clip-path:polygon(12px_0,100%_0,calc(100%-12px)_100%,0_100%)]"
+                    className="h-14 w-full rounded-lg cursor-pointer bg-(--gold-deep) text-sm font-semibold uppercase tracking-[0.12em] text-white transition-all duration-300 hover:brightness-110 hover:shadow-[0_12px_30px_rgba(155,117,56,0.25)]"
                   >
-                    <span className="block transition-all duration-300 group-hover:-translate-y-full group-hover:opacity-0">
-                      Agendar
-                    </span>
-                    <span className="absolute inset-0 flex translate-y-full items-center justify-center opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
-                      Agendar
-                    </span>
+                    Agendar consulta
                   </Button>
                 </div>
-              </motion.nav>
-            </>
-          )}
-        </AnimatePresence>
-      </div>
+              </div>
+            </motion.nav>
+
+            {/* <motion.nav
+              className="
+                fixed
+                right-0
+                top-0
+                z-50
+                h-dvh
+                w-[85%]
+                max-w-[380px]
+                bg-white
+                p-8
+                pt-24
+                shadow-2xl
+              "
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{
+                duration: 0.4,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              <button
+                className="absolute right-5 top-5"
+                onClick={() =>
+                  setIsMobileMenuOpen(false)
+                }
+              >
+                <X size={28} />
+              </button>
+
+              <div className="flex flex-col gap-10">
+                {navItems.map((item) => (
+                  <a
+                    key={item.id}
+                    href={`#${item.id}`}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(item.id);
+                    }}
+                    className="text-3xl text-(--gold-deep)"
+                  >
+                    {item.label}
+                  </a>
+                ))}
+              </div>
+
+              <Button
+                className="
+                  mt-14
+                  w-full
+                  rounded-full
+                  bg-(--gold-deep)
+                  py-7
+                  text-white
+                "
+              >
+                Agendar consulta
+              </Button>
+            </motion.nav> */}
+          </>
+        )}
+      </AnimatePresence>
     </header>
   );
-};
-
-export default Header;
+}

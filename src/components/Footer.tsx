@@ -47,7 +47,7 @@ const Footer = () => {
               fontWeight="500"
             >
               <textPath href="#footer-circle" startOffset="0%">
-                ✦ VERÔNICA FERNANDES ✦ ADVOCACIA PREVIDENCIÁRIA 
+                ✦ VERÔNICA FERNANDES ✦ ADVOCACIA PREVIDENCIÁRIA ✦
               </textPath>
             </text>
           </svg>
@@ -59,9 +59,7 @@ const Footer = () => {
     h-34
     rounded-full
     bg-[#9b7538]
-    border
-    border-white/10
-    shadow-[0_20px_60px_rgba(0,0,0,0.25)]
+    shadow-[0_0_80px_rgba(224,207,176,0.18)]
     flex
     items-center
     justify-center
@@ -97,7 +95,6 @@ const Footer = () => {
             className="mt-3 uppercase tracking-[0.35em] text-xs text-(--gold-soft)"
           >
             Advocacia Previdenciária
-            
           </motion.p>
 
           {/* Menu */}
@@ -106,39 +103,39 @@ const Footer = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="mt-12 flex flex-wrap justify-center gap-8"
+            className="mt-12 flex flex-wrap justify-center gap-8 "
           >
             <a
               href="#home"
-              className="text-white/70 hover:text-(--gold-soft) transition-colors"
+              className="text-(--gold-soft) transition-all duration-300 hover:text-white hover:-translate-y-0.5 hover:drop-shadow-[0_0_10px_rgba(224,207,176,0.3)]"
             >
               Início
             </a>
 
             <a
               href="#areas"
-              className="text-white/70 hover:text-(--gold-soft) transition-colors"
+              className="text-(--gold-soft) transition-all duration-300 hover:text-white hover:-translate-y-0.5 hover:drop-shadow-[0_0_10px_rgba(224,207,176,0.3)]"
             >
               Áreas de Atuação
             </a>
 
             <a
               href="#about"
-              className="text-white/70 hover:text-(--gold-soft) transition-colors"
+              className="text-(--gold-soft) transition-all duration-300 hover:text-white hover:-translate-y-0.5 hover:drop-shadow-[0_0_10px_rgba(224,207,176,0.3)]"
             >
               Sobre
             </a>
 
             <a
               href="#faq"
-              className="text-white/70 hover:text-(--gold-soft) transition-colors"
+              className="text-(--gold-soft) transition-all duration-300 hover:text-white hover:-translate-y-0.5 hover:drop-shadow-[0_0_10px_rgba(224,207,176,0.3)]"
             >
               FAQ
             </a>
 
             <a
               href="#contact"
-              className="text-white/70 hover:text-(--gold-soft) transition-colors"
+              className="text-(--gold-soft) transition-all duration-300 hover:text-white hover:-translate-y-0.5 hover:drop-shadow-[0_0_10px_rgba(224,207,176,0.3)]"
             >
               Contato
             </a>

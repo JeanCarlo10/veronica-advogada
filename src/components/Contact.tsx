@@ -101,7 +101,7 @@ const Contact = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
-          className="mt-10 max-w-4xl mx-auto rounded-[40px] border border-(--gold-deep)/15 bg-white p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
+          className="mt-10 mb-5 max-w-4xl mx-auto rounded-[40px] border border-(--gold-deep)/15 bg-white p-8 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.08)]"
         >
           <div className="flex flex-col md:flex-row items-center gap-10">
             {/* FOTO */}
