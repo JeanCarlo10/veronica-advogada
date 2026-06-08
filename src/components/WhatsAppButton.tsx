@@ -10,7 +10,7 @@ import {
 const WhatsAppButton = () => {
   const openWhatsApp = () => {
     window.open(
-      "https://wa.me/45991010233?text=Olá, gostaria de agendar um serviço!",
+      "https://wa.me/45991010233?text=Olá! Gostaria de receber orientação sobre meu caso previdenciário.",
       "_blank",
       "noopener,noreferrer"
     );

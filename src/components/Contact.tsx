@@ -146,7 +146,7 @@ const Contact = () => {
 
                 <a
                   href="mailto:veronicafernandes.adv@gmail.com"
-                  className="flex flex-col items-center md:items-start group transition-all duration-300 hover:-translate-y-1"
+                  className="flex flex-col items-center md:items-start group transition-all duration-300 hover:-translate-y-1 break-all"
                 >
                   <Mail className="w-5 h-5 text-(--gold-deep) group-hover:scale-110 transition-transform" />
 

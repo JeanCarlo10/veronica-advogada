@@ -4,7 +4,8 @@ import { ArrowRight } from "lucide-react";
 
 const WHATSAPP_NUMBER = "45991010233";
 
-const WHATSAPP_TEXT = "Olá! Gostaria de agendar.";
+const WHATSAPP_TEXT =
+  "Olá! Gostaria de receber orientação sobre meu caso previdenciário.";
 
 const WHATSAPP_LINK = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
   WHATSAPP_TEXT,
@@ -80,7 +81,6 @@ const Hero = () => {
                 </span>
               </a>
 
-              {/* BOTÃO SECUNDÁRIO */}
               <a
                 href="#areas"
                 className="w-[320px] h-[64px] inline-flex items-center justify-center rounded-full border border-(--gold) text-(--foreground) text-lg font-medium transition-all duration-300 hover:bg-(--gold-soft)/30 hover:-translate-y-1"

@@ -104,4 +104,33 @@
     background: var(--foreground) !important;
     opacity: 1;
   }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--gold);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--gold-deep);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    filter: brightness(1.1);
+  }
+
+  /* Selection text */
+  ::selection {
+    background: rgba(155, 117, 56, 0.25);
+    color: var(--foreground);
+  }
+
+  ::-moz-selection {
+    background: rgba(155, 117, 56, 0.25);
+    color: var(--foreground);
+  }
 }

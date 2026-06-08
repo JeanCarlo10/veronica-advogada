@@ -108,7 +108,7 @@ const About = () => {
               whileHover={{
                 scale: 1.02,
               }}
-              className="relative z-10"
+              className="relative"
             >
               <img
                 src={Image}
