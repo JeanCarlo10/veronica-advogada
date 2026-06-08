@@ -49,7 +49,7 @@ const Reviews = () => {
             initial="initial"
             whileInView="animate"
             viewport={{ once: true }}
-            className="hairline mt-8 mx-auto w-32"
+            className="hairline mt-9 mx-auto w-32"
           ></motion.div>
         </div>
 

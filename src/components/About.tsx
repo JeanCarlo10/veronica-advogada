@@ -63,40 +63,6 @@ const About = () => {
               demais demandas relacionadas à proteção social e à segurança
               jurídica de seus clientes.
             </motion.p>
-
-            {/* VALORES */}
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="grid grid-cols-1 sm:grid-cols-3 gap-8 mt-12"
-            >
-              <div className="border-l border-(--gold-deep) pl-4">
-                <h4 className="font-display text-2xl text-(--gold-deep)">
-                  Ética
-                </h4>
-                <p className="text-sm text-(--muted-foreground)">
-                  e transparência
-                </p>
-              </div>
-
-              <div className="border-l border-(--gold-deep) pl-4">
-                <h4 className="font-display text-2xl text-(--gold-deep)">
-                  Segurança
-                </h4>
-                <p className="text-sm text-(--muted-foreground)">jurídica</p>
-              </div>
-
-              <div className="border-l border-(--gold-deep) pl-4">
-                <h4 className="font-display text-2xl text-(--gold-deep)">
-                  Atenção
-                </h4>
-                <p className="text-sm text-(--muted-foreground)">
-                  personalizada
-                </p>
-              </div>
-            </motion.div>
           </div>
 
           <div className="w-full lg:w-[55%] flex justify-center">
